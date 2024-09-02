@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSO Season Card</title>
+    <style>
+        .time-field {
+            display: block;
+            box-sizing: border-box;
+            margin: 0;
+            width: 70px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: solid 1px #a0a0a0;
+            color: white;
+            font-weight: bold;
+            font-size: 11pt;
+            text-align: center;
+            font-family: Consolas;
+        }
+
+        input[type="text"]::placeholder {
+            opacity: 0.25;
+        }
+
+        #overview {
+            margin-left: 5px;
+            margin-right: 5px;
+            position: absolute;
+            width: 480px;
+            top: 460px;
+
+        }
+
+        #display {
+            position: absolute;
+            top: 575px;
+            width: 475px;
+            text-align: right;
+        }
+
+        #cumulative-time {
+            font-size: 14pt;
+            font-weight: bold;
+        }
+
+        #filled-count {
+            font-size: 28pt;
+            font-weight: bold;
+        }
+
+        body {
+            width: 480px;
+            height: 640px;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #background {
+            position: fixed;
+        }
+
+        h1 {
+            margin: 0;
+            width: 475px;
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        h2 {
+            margin: 0px;
+            font-size: 20pt;
+        }
+
+        h3 {
+            font-size: 12pt;
+            margin: 0 5px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        label {
+            font-family: Consolas;
+            font-size: 8pt;
+            margin: 0;
+            display: block;
+            text-align: center;
+            text-shadow: 1px 1px 1px black, 0 0 2px black;
+        }
+
+        #time1block {
+            position: absolute;
+            left: 205px;
+            top: 350px;
+        }
+
+        #time2block {
+            position: absolute;
+            left: 355px;
+            top: 405px;
+        }
+
+        #time3block {
+            position: absolute;
+            left: 55px;
+            top: 105px;
+        }
+
+        #time4block {
+            position: absolute;
+            left: 290px;
+            top: 305px;
+        }
+
+        #time5block {
+            position: absolute;
+            left: 30px;
+            top: 260px;
+        }
+
+        #time6block {
+            position: absolute;
+            left: 120px;
+            top: 305px;
+        }
+
+        #time7block {
+            position: absolute;
+            left: 355px;
+            top: 105px;
+        }
+
+        #time8block {
+            position: absolute;
+            left: 135px;
+            top: 170px;
+        }
+
+        #time9block {
+            position: absolute;
+            left: 205px;
+            top: 235px;
+        }
+
+        #time10block {
+            position: absolute;
+            left: 275px;
+            top: 170px;
+        }
+
+        #time11block {
+            position: absolute;
+            left: 385px;
+            top: 260px;
+        }
+
+        #time12block {
+            position: absolute;
+            left: 55px;
+            top: 405px;
+        }
+
+        #controls {
+            position: absolute;
+            top: 655px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="background">
+        <img src="bg.png" alt="Class Spread"/>
+    </div>
+
+    <h3></h3>
+    <h1>Season Card</h1>
+    <div>
+        <!-- 12 input fields for time entries -->
+        <p id="time1block">
+            <input type="text" class="time-field" id="time1" placeholder="--:--">
+            <label for="time1">HUmar</label>
+        </p>
+        <p id="time2block">
+            <input type="text" class="time-field" id="time2" placeholder="--:--">
+            <label for="time2">HUnewearl</label>
+        </p>
+        <p id="time3block">
+            <input type="text" class="time-field" id="time3" placeholder="--:--">
+            <label for="time3">HUcast</label>
+        </p>
+        <p id="time4block">
+            <input type="text" class="time-field" id="time4" placeholder="--:--">
+            <label for="time4">HUcaseal</label>
+        </p>
+        <p id="time5block">
+            <input type="text" class="time-field" id="time5" placeholder="--:--">
+            <label for="time5">RAmar</label>
+        </p>
+        <p id="time6block">
+            <input type="text" class="time-field" id="time6" placeholder="--:--">
+            <label for="time6">RAmarl</label>
+        </p>
+        <p id="time7block">
+            <input type="text" class="time-field" id="time7" placeholder="--:--">
+            <label for="time7">RAcast</label>
+        </p>
+        <p id="time8block">
+            <input type="text" class="time-field" id="time8" placeholder="--:--">
+            <label for="time8">RAcaseal</label>
+        </p>
+        <p id="time9block">
+            <input type="text" class="time-field" id="time9" placeholder="--:--">
+            <label for="time9">FOmar</label>
+        </p>
+        <p id="time10block">
+            <input type="text" class="time-field" id="time10" placeholder="--:--">
+            <label for="time10">FOmarl</label>
+        </p>
+        <p id="time11block">
+            <input type="text" class="time-field" id="time11" placeholder="--:--">
+            <label for="time11">FOnewm</label>
+        </p>
+        <p id="time12block">
+            <input type="text" class="time-field" id="time12" placeholder="--:--">
+            <label for="time12">FOnewearl</label>
+        </p>
+
+    </div>
+
+    <div id="overview">
+        <h2>Phantasy Star Online</h2>
+        <p id="copy"></p>
+    </div>
+    <div id="display">
+        <p>Cumulative Time: <span id="cumulative-time">00:00</span></p>
+        <p>Completed Classes: <span id="filled-count">0</span></p>
+    </div>
+
+    <div id="controls">
+        <input type="text" id="name" placeholder="Your Name" />
+        <button id="reset">Clear</button>
+        <button id="resetAll">Clear All Cards</button>
+    </div>
+
+    <script>
+        function formatTimeInput(input) {
+            if (input.value == '') {
+                return;
+            }
+            let values = input.value.split(':');
+            if (values.length < 2) {
+                values = ['0', values[0]];
+            }
+            values[values.length - 1] = values[values.length - 1].padStart(2, '0');
+            values[values.length - 2] = values[values.length - 2].padStart(2, '0');
+            input.value = values.join(':');
+        }
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputFields = document.querySelectorAll('.time-field');
+            const nameField = document.getElementById('name');
+            const cumulativeTimeDisplay = document.getElementById('cumulative-time');
+            const filledCountDisplay = document.getElementById('filled-count');
+            const title = document.getElementsByTagName('h1')[0];
+            const category = document.getElementsByTagName('h2')[0];
+            const nameDisplay = document.getElementsByTagName('h3')[0];
+            const storageKey = `s${getQueryParam('s') ?? '0'}_t`;
+
+            const titleParam = getQueryParam('title');
+            if (titleParam) {
+                title.textContent = titleParam;
+            }
+
+            const categoryParam = getQueryParam('category');
+            if (categoryParam) {
+                category.textContent = categoryParam;
+            }
+
+            const copyParam = getQueryParam('copy');
+            if (copyParam) {
+                document.getElementById('copy').textContent = copyParam;
+            }
+
+            const grayscale = getQueryParam('grayscale');
+            if (grayscale) {
+                document.getElementById('background').style.filter = `grayscale(${grayscale})`;
+            }
+
+            // Load saved values from local storage
+            nameField.value = localStorage.getItem('name') ?? '';
+            nameDisplay.textContent = nameField.value;
+
+            inputFields.forEach((input, index) => {
+                const savedValue = localStorage.getItem(`${storageKey}${index + 1}`);
+                if (savedValue) {
+                    input.value = savedValue;
+                    formatTimeInput(input);
+                }
+            });
+
+            function updateDisplay() {
+                let totalSeconds = 0;
+                let filledCount = 0;
+
+                inputFields.forEach(input => {
+                    const value = input.value;
+                    let values = input.value.split(':').map(Number);
+                    if (value) {
+                        filledCount++;
+                        let mult = 1;
+                        for (let i = values.length - 1; i >= 0; i--) {
+                            totalSeconds += values[i] * mult;
+                            mult *= 60;
+                        }
+                    }
+                });
+
+                const cumulativeMinutes = Math.floor(totalSeconds / 60);
+                const cumulativeSeconds = totalSeconds % 60;
+                cumulativeTimeDisplay.textContent = `${String(cumulativeMinutes).padStart(2, '0')}:${String(cumulativeSeconds).padStart(2, '0')}`;
+                filledCountDisplay.textContent = `${filledCount}`;
+            }
+
+            function resetForm(ev) {
+                if (ev.currentTarget.all) {
+                    localStorage.clear();
+                    nameField.value = '';
+                    nameDisplay.textContent = '';
+                }
+                inputFields.forEach((input, index) => {
+                    input.value = '';
+                    if (!ev.currentTarget.all)
+                        localStorage.removeItem(`${storageKey}${index + 1}`);
+                });
+                updateDisplay();
+            }
+
+            // when name is modified, save and update header
+            nameField.addEventListener('input', () => {
+                localStorage.setItem('name', nameField.value);
+                nameDisplay.textContent = nameField.value;
+            });
+
+            // when time field is modified, save and update display
+            inputFields.forEach((input, index) => {
+                input.addEventListener('input', () => {
+                    localStorage.setItem(`${storageKey}${index + 1}`, input.value);
+                    updateDisplay();
+                });
+                input.addEventListener('blur', () => {
+                    formatTimeInput(input);
+                });
+                input.addEventListener('keypress', (event) => {
+                    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':'];
+                    if (!allowedKeys.includes(event.key)) {
+                        event.preventDefault();
+                    }
+                });
+            });
+
+            // reset buttons wiring
+            document.getElementById('reset').addEventListener('click', resetForm);
+            const resetAll = document.getElementById('resetAll')
+            resetAll.addEventListener('click', resetForm);
+            resetAll.all = true;
+
+            // upate display on page load
+            updateDisplay();
+        });
+    </script>
+</body>
+
+</html>
